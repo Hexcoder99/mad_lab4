@@ -37,11 +37,24 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    private fun fetchlist(){
+    private fun fetchlist() {
+        // Fetch the list of tasks from the database
         tasklist = dbHandler!!.getAllTask()
-        taskListAdapter = TaskListAdapter(tasklist,applicationContext)
-        linearLayoutManager = linearLayoutManager
+
+        // Create an adapter for the RecyclerView
+        taskListAdapter = TaskListAdapter(tasklist, applicationContext)
+
+        // Create an instance of LinearLayoutManager
+        linearLayoutManager = LinearLayoutManager(applicationContext)
+
+        // Set the LinearLayoutManager as the layout manager for the RecyclerView
+        recycler_task.layoutManager = linearLayoutManager
+
+        // Set the adapter for the RecyclerView
         recycler_task.adapter = taskListAdapter
+
+        // Notify the adapter that the data has changed (if applicable)
         taskListAdapter?.notifyDataSetChanged()
     }
+
 }

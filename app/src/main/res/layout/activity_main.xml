@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DAD6CB"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,10 +13,12 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:id="@+id/rv_list"/>
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/bt_add_items"
-       android:text="Add task"
-       />
+
+    <Button
+        android:id="@+id/bt_add_items"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#292626"
+        android:backgroundTintMode="src_over"
+        android:text="Add task" />
 </LinearLayout>

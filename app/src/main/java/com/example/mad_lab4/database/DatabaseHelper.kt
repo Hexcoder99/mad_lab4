@@ -20,8 +20,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
     }
 
     override fun onCreate(p0: SQLiteDatabase?) {
-        val CREATE_TABLE =
-            "CREATE TABLE $TABLE_NAME ($ID INTEGER PRIMARY KEY,$TASK_NAME TEXT,$TASK_DETAILS TEXT);"
+        val CREATE_TABLE = "CREATE TABLE $TABLE_NAME ($ID INTEGER PRIMARY KEY,$TASK_NAME TEXT,$TASK_DETAILS TEXT);"
         p0?.execSQL(CREATE_TABLE)
     }
 
@@ -47,18 +46,17 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null
                     taskList.add(tasks)
                 } while (cursor.moveToNext())
             }
-            cursor.close()
-
         }
+            cursor.close()
         return taskList
     }
 
     //insert
-    fun addTask(taskListModel: TaskListModel): Boolean {
+    fun addTask(tasks: TaskListModel): Boolean {
         val db = this.writableDatabase
         val values = ContentValues()
-        values.put(TASK_NAME, taskListModel.name)
-        values.put(TASK_DETAILS, taskListModel.details)
+        values.put(TASK_NAME, tasks.name)
+        values.put(TASK_DETAILS, tasks.details)
         val _success = db.insert(TABLE_NAME, null, values)
         db.close()
         return (Integer.parseInt("$_success") != -1)

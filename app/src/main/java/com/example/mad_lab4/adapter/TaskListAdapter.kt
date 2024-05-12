@@ -17,6 +17,7 @@ import com.example.mad_lab4.model.TaskListModel
 
 class TaskListAdapter(tasklist: List<TaskListModel>, internal var context: Context)
     : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
+
     internal var tasklist: List<TaskListModel> = ArrayList()
 
     init {
@@ -43,11 +44,15 @@ class TaskListAdapter(tasklist: List<TaskListModel>, internal var context: Conte
         holder.name.text =tasks.name
         holder.details.text = tasks.details
 
+
+
         holder.btn_edit.setOnClickListener{
              val i = Intent(context, AddTask::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             i.putExtra("mode", "E")
             i.putExtra("Id",tasks.id)
             context.startActivity(i)
+
         }
 
     }
